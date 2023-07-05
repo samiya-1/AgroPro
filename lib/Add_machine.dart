@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show MultipartRequest, MultipartFile, Response, StreamedResponse;
+
 
 class Add_machine extends StatefulWidget {
   Add_machine({Key? key}) : super(key: key);

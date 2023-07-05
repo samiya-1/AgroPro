@@ -68,7 +68,7 @@ class _Rent_MachineState extends State<Rent_Machine> {
     if(body['success']==true)
     {
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentmachinerent(result: result,)));
+      //Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentmachinerent(result: result,)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 class Api {
-  final String url = "https://b3ab-117-219-144-99.ngrok-free.app";
+  final String url = "https://0feb-103-94-137-202.ngrok-free.app";
 
   authData(data, apiUrl) async {
     var fullUrl = url + apiUrl;

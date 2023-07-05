@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:helloworld/API.dart';
 import 'package:helloworld/payment.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'API.dart';
 
 class Buy_Product extends StatefulWidget {
   final int pid;
@@ -35,7 +39,6 @@ class _Buy_ProductState extends State<Buy_Product> {
     double productPrice = double.tryParse(price) ?? 0;
     setState(() {
       result = quantity * productPrice;
-      print("result${result}");
     });
   }
 
@@ -50,7 +53,6 @@ class _Buy_ProductState extends State<Buy_Product> {
     });
 
     double quantity = double.tryParse(quantityController.text.trim()) ?? 0;
-   // _calculateTotalAmount(quantityController.text.trim(), price);
 
     String totalAmount = result.toString();
     var data = {
@@ -84,10 +86,8 @@ class _Buy_ProductState extends State<Buy_Product> {
   @override
   void initState() {
     super.initState();
-   // _viewPro();
   }
 
-  int index = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -95,111 +95,110 @@ class _Buy_ProductState extends State<Buy_Product> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
             const Text(
               "Buy Product",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-
-            const SizedBox(height: 45),
+            const SizedBox(height: 20),
             Text(
               product_name,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10,),
-                      Container(
-                          child: Image.network(
-                            Api().url+ image,width: 200,height: 200,
-                          )
-
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TextField(
-                                controller: quantityController,
-                                keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  setState(() {
-                                   // _calculateTotalAmount(value, price);
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  labelText: "Enter the quantity",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                              ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 20),
+                        // Container(
+                        //   child: Image.network(
+                        //     Api().url+ image,
+                        //     width: 200,
+                        //     height: 200,
+                        //   ),
+                        // ),
+                        const SizedBox(height: 20),
+                        TextField(
+                          controller: quantityController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            setState(() {
+                              _calculateTotalAmount(value, widget.price);
+                            });
+                          },
+                          decoration: InputDecoration(
+                            labelText: "Enter the quantity",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          SizedBox(width: 20),
-                          ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                _calculateTotalAmount(quantityController.text.trim(), widget.price);
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(29.0),
-                              ),
-                              backgroundColor: Colors.green,
-                              fixedSize: const Size(50, 57),
-                            ),
-                            child: Text(
-                              "Get ",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 45),
-                      Text(
-                        'The amount to be paid:',
-                      ),
-
-                      Text(
-                        result.toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.grey,
                         ),
-                      ),
-                      const SizedBox(height: 45),
-                      ElevatedButton(
-                        onPressed: () {
-                          buyProduct();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(29.0),
-                          ),
-                          backgroundColor: Colors.green,
-                          fixedSize: const Size(50, 57),
-                        ),
-                        child: Text(
-                          "Buy",
+                        const SizedBox(height: 20),
+                        // ElevatedButton(
+                        //   onPressed: () {
+                        //     setState(() {
+                        //       _calculateTotalAmount(quantityController.text.trim(), widget.price);
+                        //     });
+                        //   },
+                        //   style: ElevatedButton.styleFrom(
+                        //     shape: RoundedRectangleBorder(
+                        //       borderRadius: BorderRadius.circular(29.0),
+                        //     ),
+                        //     backgroundColor: Colors.green,
+                        //     padding: const EdgeInsets.symmetric(vertical: 15),
+                        //   ),
+                        //   child: Text(
+                        //     "Calculate Total",
+                        //     style: TextStyle(
+                        //       fontSize: 18,
+                        //       color: Colors.white,
+                        //     ),
+                        //   ),
+                        // ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Total Amount:',
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Colors.white,
+                            color: Colors.grey,
                           ),
                         ),
-                      ),
-                    ],
+                        Text(
+                          result.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            buyProduct();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(29.0),
+                            ),
+                            backgroundColor: Colors.green,
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                          ),
+                          child: Text(
+                            "Buy",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -69,7 +69,7 @@ class _Buy_MachineState extends State<Buy_Machine> {
     if(body['success']==true)
     {
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentmachinebuy(result: result,)));
+      //Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentmachinebuy(result: result,)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

@@ -71,9 +71,18 @@ class _ClassNotifyState extends State<Method_Technique> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Row(
+                              children: [
+                                Expanded(child: Text("Method/Technique name:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),),
 
-                            Text(_loaddata[index]['fertilizer_name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,fontFamily: AutofillHints.username),textAlign: TextAlign.justify,),
+
+                              ],
+                            ),
+                            Text(_loaddata[index]['fertilizer_name'],style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: AutofillHints.username,color: Colors.green),textAlign: TextAlign.justify,),
+
                             SizedBox(height: 20,),
+                            Text("details:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+
                             Text(_loaddata[index]['details'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
 
                           ],
@@ -88,8 +97,8 @@ class _ClassNotifyState extends State<Method_Technique> {
                   ),
                   SizedBox(height: 12,),
                   Divider(
-                    color: Colors.grey[300],
-                    thickness: 2,
+                    color: Colors.grey[600],
+                    thickness: 5,
                   )
                 ],
               ),

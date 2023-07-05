@@ -78,34 +78,52 @@ class _Single_ProductState extends State<Single_Product> {
         child:
         Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(height: 30,),
+            Text(product_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
             Container(
                 child: Image.network(
-                  Api().url+ image,width: 200,height: 200,
+                  Api().url+ image,width: 400,height: 400,
                 )
 
             ),
 
-            SizedBox(height: 24,),
-            Text(product_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-            SizedBox(height: 10,),
+           // SizedBox(height: 14,),
+
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 Column(
                   children: [
-                    Text('Details:',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18,color: Colors.green),),
+                    Text('Details:',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.green),),
                     SizedBox(height: 15,),
-                    Text('quantity:-'),
-                    Text(quantity,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                    Row(
+                      children: [
+                        Text('Quantity:-',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.black),),
+                        Text(quantity,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 23,color: Colors.grey),),
+                      ],
+                    ),
+
                     SizedBox(height: 15,),
-                    Text('price:-'),
-                    Text(price,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                    Row(children: [
+                      Text('price:-',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.black),),
+                      Text(price,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                    ],),
+
                     SizedBox(height: 15,),
-                    Text('quality:-'),
-                    Text(quality,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
-                    Text('freshness:-'),
-                    Text(freshness,textAlign: TextAlign.justify,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                    Row(
+                      children: [
+                        Text('quality:-',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.black),),
+                        Text(quality,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                      ],
+                    ),
+                    SizedBox(height: 15,),
+                    Row(
+                      children: [
+                        Text('freshness:-',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.black),),
+                        Text(freshness,textAlign: TextAlign.justify,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                      ],
+                    ),
+
                   ],
                 ),
 
@@ -125,7 +143,9 @@ class _Single_ProductState extends State<Single_Product> {
                           // registerUser();
                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Buy_Product(pid: pid,price:price)));
                         },
-                          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),primary: Colors.green,fixedSize: Size(200, 57)),
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0)),primary: Colors.green,fixedSize: Size(200, 57)),
                           child: Text("Buy",style: TextStyle(
                               fontSize: 18,color: Colors.white
                           ),),),

@@ -60,10 +60,10 @@ class _ClassNotifyState extends State<MarketPrice> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.price_change,color: Colors.green,size: 36,),
-                      ),
+                      // CircleAvatar(
+                      //   backgroundColor: Colors.white,
+                      //   child: Icon(Icons.price_change,color: Colors.green,size: 36,),
+                      // ),
                       SizedBox(width: 16,),
                       Expanded(
                         flex: 6,
@@ -71,23 +71,23 @@ class _ClassNotifyState extends State<MarketPrice> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row( children:[
-                              Text("product name:"),
-                              Text(_loaddata[index]['product_name'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              Text("Product name:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                              Text(_loaddata[index]['product_name'],style: TextStyle(fontSize: 20),textAlign: TextAlign.justify,),
                            ]
                             ),
                             Row( children:[
-                              Text("date:"),
-                              Text(_loaddata[index]['date'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              Text("Date:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                              Text(_loaddata[index]['date'],style: TextStyle(fontSize: 20),textAlign: TextAlign.justify,),
                             ]
                             ),
                             Row( children:[
-                              Text("unit:"),
-                              Text(_loaddata[index]['unit'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              Text("Unit:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                              Text(_loaddata[index]['unit'],style: TextStyle(fontSize: 20),textAlign: TextAlign.justify,),
                             ]
                             ),
                             Row( children:[
-                              Text("price:"),
-                              Text(_loaddata[index]['price'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              Text("Change:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                              Text(_loaddata[index]['change'],style: TextStyle(fontSize: 20),textAlign: TextAlign.justify,),
                             ]
                             ),
 
@@ -95,8 +95,10 @@ class _ClassNotifyState extends State<MarketPrice> {
                         ),
                       ),
                       SizedBox(width: 14,),
-                      Text("change:"),
-                      Text(_loaddata[index]['change'],style: TextStyle(fontSize: 15))
+                      Text("Price:",style: TextStyle(
+                        fontWeight: FontWeight.bold,fontSize: 20
+                      ),),
+                      Text(_loaddata[index]['price'],style: TextStyle(fontSize: 20))
                     ],
                   ),
                   SizedBox(height: 12,),

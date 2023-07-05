@@ -1,6 +1,5 @@
 import 'package:helloworld/Complaint_details.dart';
 import 'package:helloworld/Government_Schemes.dart';
-import 'package:helloworld/My_orders.dart';
 //import 'package:helloworld/AllUserChats.dart.dart';
 import 'package:helloworld/weather.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +11,6 @@ import 'package:helloworld/notification.dart';
 import 'package:helloworld/MyProfile.dart';
 import 'package:helloworld/payment_details.dart';
 import 'package:helloworld/products.dart';
-
-import 'AllUserChats.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -110,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 setState(() {
                   currentScreen=Profile();
-                  currentTab = 3;
+                  currentTab = 2;
                 });
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
               },
@@ -118,8 +115,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
 
-                  Icon(Icons.person_outline_outlined,size: 30,color: currentTab==3 ? Colors.green : Colors.black),
-                  Text('Profile',style: TextStyle(fontWeight: FontWeight.bold,color: currentTab==3 ? Colors.green : Colors.black),)
+                  Icon(Icons.person_outline_outlined,size: 30,color: currentTab==2 ? Colors.green : Colors.black),
+                  Text('Profile',style: TextStyle(fontWeight: FontWeight.bold,color: currentTab==2 ? Colors.green : Colors.black),)
                 ],
               ),
             ),
@@ -375,41 +372,41 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                    offset: Offset(0,17),
-                                    blurRadius: 17,
-                                    spreadRadius: -23
-                                )
-                              ]
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat_Details()));
-                              },
-                              child: Column(
-                                children: [
-
-                                  new Image.asset('Images/img_8.png',
-                                    height: 120,
-                                    width: 200,
-                                    alignment: Alignment.center,
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Text('Chat',textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
-
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Container(
+                        //   padding: EdgeInsets.all(20),
+                        //   decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius: BorderRadius.circular(15),
+                        //       boxShadow: [
+                        //         BoxShadow(
+                        //             offset: Offset(0,17),
+                        //             blurRadius: 17,
+                        //             spreadRadius: -23
+                        //         )
+                        //       ]
+                        //   ),
+                        //   child: Material(
+                        //     color: Colors.transparent,
+                        //     child: InkWell(
+                        //       onTap: () {
+                        //         Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat_Details()));
+                        //       },
+                        //       child: Column(
+                        //         children: [
+                        //
+                        //           new Image.asset('Images/img_8.png',
+                        //             height: 120,
+                        //             width: 200,
+                        //             alignment: Alignment.center,
+                        //           ),
+                        //           SizedBox(height: 10,),
+                        //           Text('Chat',textAlign: TextAlign.center,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+                        //
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
