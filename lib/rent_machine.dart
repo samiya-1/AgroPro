@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:helloworld/API.dart';
+import 'package:helloworld/pay.dart';
 import 'package:helloworld/payment.dart';
 import 'package:helloworld/paymentmachinerent.dart';
 import 'package:intl/intl.dart';
@@ -28,7 +29,7 @@ class _Rent_MachineState extends State<Rent_Machine> {
   String machine_name='';
   String quantity='';
   String total_amount='';
-  String image='';
+
   bool _isLoading=false;
 
   void _calculateTotalAmount(String value, String price) {
@@ -56,9 +57,7 @@ class _Rent_MachineState extends State<Rent_Machine> {
       "machine":mid.toString(),
       "quantity": quantityController.text.trim(),
       "date":datetime1,
-     "image": image,
       "total_amount": totalAmount,
-
     };
 
     print("machine data${data}");
@@ -68,7 +67,7 @@ class _Rent_MachineState extends State<Rent_Machine> {
     if(body['success']==true)
     {
 
-      //Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentmachinerent(result: result,)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment(result: result,)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,
@@ -98,23 +97,13 @@ class _Rent_MachineState extends State<Rent_Machine> {
       body:  Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text("Rent Machines",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
+          Text("Rent Machines",style:
+          TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
           SizedBox(height: 25,),
-          Text("On Buying Items on rent you will have a decrease of 75% of actual price",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w100),),
-          /*Align(
-                alignment: Alignment.topLeft,
-                child: Text("",style: TextStyle(fontSize: 16),textAlign: TextAlign.left,),
-              ),*/
-          // SizedBox(height: 35,),
-          // Container(
-          //     child: Image.network(
-          //       Api().url+ image,width: 100,
-          //     )
-          //
-          // ),
-          const SizedBox(height: 45),
-          Text(
-            machine_name,
+          Text("On Buying Items on rent you will have a decrease of 75% of actual price.",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w100),),
+
+          const SizedBox(height: 20),
+          Text(machine_name,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
           ),
           const SizedBox(height: 35),
@@ -129,93 +118,103 @@ class _Rent_MachineState extends State<Rent_Machine> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TextField(
-                                controller: quantityController,
-                                keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  setState(() {
-                                    // _calculateTotalAmount(value, price);
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  labelText: "Enter the quantity",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 24,),
-                          ElevatedButton(onPressed: (){
-                            setState(() {
-                              _calculateTotalAmount(quantityController.text.trim(), widget.price);
-                            });
-                          },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(29.0),
-                              ),
-                              backgroundColor: Colors.green,
-                              fixedSize: const Size(50, 57),
-                            ),
-                            child: Text(
-                              "Get ",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(height: 20),
+                    // Container(
+                    //   child: Image.network(
+                    //     Api().url+ image,
+                    //     width: 200,
+                    //     height: 200,
+                    //   ),
+                    // ),
+                    const SizedBox(height: 20),
+                    TextField(
+                      controller: quantityController,
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        setState(() {
+                          _calculateTotalAmount(value, widget.price);
+                        });
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Enter the quantity",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
-
-                      SizedBox(height: 15,),
-                      Text(
-                        'The amount to be paid:',
+                    ),
+                    const SizedBox(height: 20),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       _calculateTotalAmount(quantityController.text.trim(), widget.price);
+                    //     });
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(29.0),
+                    //     ),
+                    //     backgroundColor: Colors.green,
+                    //     padding: const EdgeInsets.symmetric(vertical: 15),
+                    //   ),
+                    //   child: Text(
+                    //     "Calculate Total",
+                    //     style: TextStyle(
+                    //       fontSize: 18,
+                    //       color: Colors.white,
+                    //     ),
+                    //   ),
+                    // ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Total Amount:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.grey,
                       ),
-
-                      Text(
-                        result.toString(),
+                    ),
+                    Text(
+                      result.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Rentmachine();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(29.0),
+                        ),
+                        backgroundColor: Colors.green,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                      ),
+                      child: Text(
+                        "Buy",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
                           fontSize: 18,
-                          color: Colors.grey,
+                          color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 45),
-
-                      SizedBox(height: 20,),
-                      const SizedBox(height: 45),
-                      ElevatedButton(
-                        onPressed: () {
-                          Rentmachine();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(29.0),
-                          ),
-                          backgroundColor: Colors.green,
-                          fixedSize: const Size(50, 57),
-                        ),
-                        child: Text(
-                          "Buy",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-
-                    ]
+                    ),
+                  ],
                 ),
               ),
-            ),
+              ),
+           ] ),
 
-          ),
-        ],
-      ),
+         ] ),
+        )
+              ),
+            )
+    ]  ),
     ),
     );
   }

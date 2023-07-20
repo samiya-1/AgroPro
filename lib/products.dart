@@ -59,32 +59,7 @@ List _loaddata=[];
                   ),
                 ),
                 SafeArea(
-                  // Container(
-                  //   margin: EdgeInsets.symmetric(vertical: 30),
-                  //   padding: EdgeInsets.symmetric(horizontal: 30,vertical: 5),
-                  //   decoration:BoxDecoration(
-                  //
-                  //       color: Colors.white,
-                  //       borderRadius: BorderRadius.circular(29.5)
-                  //   ),
-                  //child:
 
-                  // TextField(
-                  //   controller: searchController,
-                  //   decoration: const InputDecoration(
-                  //       prefixIcon: Icon(Icons.search),
-                  //       hintText: "Search",
-                  //       border: InputBorder.none,
-                  //     prefixIconColor: Colors.green,
-                  //    /* hoverColor: Colors.green,
-                  //     focusColor: Colors.green,
-                  //     suffixIconColor: Colors.green,
-                  //       iconColor: Colors.green,
-                  //     fillColor: Colors.green*/
-                  //
-                  //   ),
-                  //),
-                  // ),
                     child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 17),
                         child: Column(

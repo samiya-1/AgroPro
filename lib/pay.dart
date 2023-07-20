@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:helloworld/API.dart';
-import 'package:helloworld/machine_payment_message.dart';
+import 'package:helloworld/payment_Message.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Payment extends StatefulWidget {
+class Pay extends StatefulWidget {
   final double result;
-  Payment({required this.result});
+  Pay({required this.result});
 
   @override
-  State<Payment> createState() => _PaymentState();
+  State<Pay> createState() => _PayState();
 }
 
-class _PaymentState extends State<Payment> {
+class _PayState extends State<Pay> {
   DateTime datetime = DateTime.now();
   String datetime1 = '';
   late SharedPreferences prefs;
@@ -54,7 +54,7 @@ class _PaymentState extends State<Payment> {
     print('Response: $body');
 
     if (body['success'] == true) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Payment_Message()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Pay_Message()));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

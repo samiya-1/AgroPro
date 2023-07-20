@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:helloworld/pay.dart';
 import 'package:helloworld/payment.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -70,7 +71,7 @@ class _Buy_ProductState extends State<Buy_Product> {
     print('Response: $body');
 
     if (body['success'] == true) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Payment(result: result,)));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Pay(result: result,)));
       Fluttertoast.showToast(
         msg: body['message'].toString(),
         backgroundColor: Colors.grey,

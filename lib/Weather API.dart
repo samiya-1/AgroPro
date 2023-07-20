@@ -13,7 +13,7 @@ class _WeatherAppState extends State<WeatherApp> {
   @override
   void initState() {
     controller = WebViewController()
-      ..loadRequest(Uri.parse('https://tractorgyan.com/tractor-industry-news-blogs/896/top-10-central-government-schemes-for-farmers-in-india'));
+      ..loadRequest(Uri.parse('https://www.almanac.com/'));
     super.initState();
   }
 

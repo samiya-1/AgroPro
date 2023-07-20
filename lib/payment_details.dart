@@ -13,8 +13,6 @@ class Pay_Details extends StatefulWidget {
 
 class _Pay_DetailsState extends State<Pay_Details> {
   List _loaddata=[];
-
-  get prefs => null;
   @override
   void initState() {
     // TODO: implement initState
@@ -22,8 +20,8 @@ class _Pay_DetailsState extends State<Pay_Details> {
     _fetchData();
   }
   _fetchData() async {
-    var user = (prefs.getInt('user') ?? 0);
-    var res = await Api().getData('/api/allpayment/$user');
+    var res = await Api().
+    getData('/api/allpayment');
     if (res.statusCode == 200) {
       var items = json.decode(res.body)['data'];
       print(items);
@@ -72,16 +70,32 @@ class _Pay_DetailsState extends State<Pay_Details> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(_loaddata[index]['payment_method'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
-                            Text(_loaddata[index]['amount'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
-                           // Text(_loaddata[index]['user'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                            Row(
+                              children: [
+                                Text("Payment Method:"),
+                                Text(_loaddata[index]['payment_method'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Text("Amount:"),
+                                Text(_loaddata[index]['amount'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                              ],
+                            ),
+
 
 
 
                           ],
                         ),
                       ),
-                      Text(_loaddata[index]['date'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                      Row(
+                        children: [
+                          Text("Date:"),
+                          Text(_loaddata[index]['date'],style: TextStyle(fontSize: 16),textAlign: TextAlign.justify,),
+                        ],
+                      ),
 
                     ],
 

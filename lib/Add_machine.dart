@@ -30,7 +30,6 @@ class _Add_machineState extends State<Add_machine> {
   TextEditingController qualityController = TextEditingController();
   TextEditingController warrantyController = TextEditingController();
 
-  // Rest of your code...
 
   Future<void> submitForm(
       String MachineName,
@@ -145,11 +144,12 @@ class _Add_machineState extends State<Add_machine> {
     if (pickedFile != null) {
       setState(() {
         imageFile = File(pickedFile.path);
-        _filename = basename(imageFile!.path);
+        //  _filename = basename(imageFile!.path).toString();
+        final _nameWithoutExtension = basenameWithoutExtension(imageFile!.path);
+        final _extenion = extension(imageFile!.path);
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -297,19 +297,25 @@ class _Add_machineState extends State<Add_machine> {
                 ): Row(
                   children: [
                     Container(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Image.file(
                         imageFile!,
-                        width: 100,
-                        height: 100,
+                        width: 300,
+                        height: 300,
                         //  fit: BoxFit.cover,
                       ),
-                    ), ElevatedButton(
-                      onPressed: () {
-                        //    _getFromGallery();
-                        _showChoiceDialog(context);
-                      },
-                      child: Text("Upload Image"),
+                    ),
+                    Column
+                    (
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            //    _getFromGallery();
+                            _showChoiceDialog(context);
+                          },
+                          child: Text("Upload Image"),
+                        ),
+                      ],
                     ),
                   ],
                 ),

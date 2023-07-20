@@ -16,7 +16,7 @@ class Welcome extends StatelessWidget {
               const SizedBox(height: 25,),
               const Align(
                 alignment: Alignment.center,
-                child: Text("This application will Helps you to buy and sell products ",style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
+                child: Text("This application will Helps you to buy and sell farming products and machines ",style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
               ),
               const SizedBox(height: 35,),
               Image.asset(

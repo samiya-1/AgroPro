@@ -121,7 +121,7 @@ class _RegisterState extends State<Register> {
                   padding:  EdgeInsets.all(8.0),
                   child: TextField(
                     controller: pwdController,
-                      obscureText: passwordVisible1,
+                      obscureText: true,
                       //keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           prefixIconColor: Colors.green,

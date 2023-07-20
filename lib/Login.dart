@@ -121,6 +121,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  obscureText: true,
                   controller: pwdController,
                     style: TextStyle(color: Colors.green),
                     decoration: InputDecoration(

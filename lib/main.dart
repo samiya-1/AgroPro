@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/Welcome.dart';
+import 'package:helloworld/splash.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: "cairo",
       scaffoldBackgroundColor: kBackgroundColor,
       textTheme: Theme.of(context).textTheme.apply(displayColor: kTextColor),),
-      home: Welcome(),
+      home: SplashScreen(),
       );
 
 

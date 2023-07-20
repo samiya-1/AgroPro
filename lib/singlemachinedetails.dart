@@ -75,10 +75,13 @@ class _Single_MachineState extends State<Single_Machine> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child:
+        Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(height: 24,),
+            Text(machine_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
             Container(
+
                 child: Image.network(
                   Api().url+ image,width: 300,
                   height: 300,
@@ -86,30 +89,76 @@ class _Single_MachineState extends State<Single_Machine> {
 
             ),
 
-            SizedBox(height: 24,),
-            Text(machine_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-            SizedBox(height: 10,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
-                Text('Details:\n',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18,color: Colors.green),),
+                Column(
+                  children: [
+                    Text('Details:\n',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 25,color: Colors.green),),
+
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Text('Quantity:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(quantity,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                  ],
+                ),
+
                 SizedBox(height: 15,),
-                Text('quantity:-'),
-                Text(quantity,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                Row(
+                  children: [
+                    Text('Warranty:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(warranty,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                  ],
+                ),
+
                 SizedBox(height: 15,),
-                Text('price:-'),
-                Text(price,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
-                SizedBox(height: 15,),
-                Text('quality:-'),
+                Row(
+                  children: [
+                    Text('Cost of Maintanence:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text(cost_of_maintanence,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+                  ],
+                ),
+
+
+            SizedBox(height: 15,),
+            Row(
+              children: [
+                Text('Motor Capacity:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                Text(motor_capacity,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+              ],
+            ),
+
+            SizedBox(height: 15,),
+            Row(
+              children: [
+                Text('Speed:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                Text(speed,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
+              ],
+            ),
+
+            SizedBox(height: 15,),
+            Row(
+              children: [
+                Text('Quality:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 Text(quality,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.grey),),
               ],
             ),
-            SizedBox(height: 15,),
-            Padding(
-              padding: const EdgeInsets.all(15),
 
-              child: Text(warranty,textAlign: TextAlign.justify,style: TextStyle(fontSize: 17),),
+            SizedBox(height: 15,),
+            Row(
+              children: [
+                Text('Price:-',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                Text(price,textAlign: TextAlign.justify,style: TextStyle(fontSize: 17),),
+              ],
+            )
+              ]
             ),
+          ]
+        ),
+
+
+                SizedBox(height: 15,),
             Column(
               children: [
                 SingleChildScrollView(
@@ -135,20 +184,19 @@ class _Single_MachineState extends State<Single_Machine> {
                               ,fixedSize: Size(150, 57)),
                           child: Text("Rent",style: TextStyle(
                               fontSize: 18,color: Colors.white
-                          ),),),
+                          ),
+                          ),
+                        ),
               ]  ),
                     ),
                   ),
                 ),
-              ],
-            ),
 
+    ],
+    ),
+        ]),
 
-          ],
-
-        ),
       ),
-
     );
   }
 }

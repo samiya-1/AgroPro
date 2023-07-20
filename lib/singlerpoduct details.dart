@@ -82,12 +82,9 @@ class _Single_ProductState extends State<Single_Product> {
             Text(product_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
             Container(
                 child: Image.network(
-                  Api().url+ image,width: 400,height: 400,
+                  Api().url+ image,width: 250,height: 250,
                 )
-
             ),
-
-           // SizedBox(height: 14,),
 
             Row(
 
